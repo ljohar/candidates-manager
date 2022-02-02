@@ -15,7 +15,7 @@ public class Tag implements Serializable {
     @Column(name = "tags" )
     private String tag;
 
-    //ASOCIACIONES
+    //Bidireccional
     @ManyToMany(mappedBy = "tags")
     private List<Candidate> candidates = new ArrayList<>();
 

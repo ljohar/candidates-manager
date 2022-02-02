@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.List;
+
 @SpringBootApplication
 public class FirstCommitApplication {
 
@@ -30,7 +32,21 @@ public class FirstCommitApplication {
 				true,
 				"54678798983"
 		);
+
+		Candidate candidate2 = new Candidate(
+				null,
+				"name2",
+				"lastaname2",
+				"candidate2@gmail.com",
+				"Medellin",
+				"Colombia",
+				true,
+				true,
+				"54678798983"
+		);
 		candidateRepository.save(candidate1);
+		candidateRepository.save(candidate2);
+
 
 		//TAG
 
@@ -38,8 +54,11 @@ public class FirstCommitApplication {
 
 		Tag tag1 = new Tag(null, "tag1");
 		Tag tag2 = new Tag(null, "tag2");
+		Tag tag3 = new Tag(null, "tag3");
+
 		tagRepository.save(tag1);
 		tagRepository.save(tag2);
+		tagRepository.save(tag3);
 
 
 		//USER
@@ -55,12 +74,22 @@ public class FirstCommitApplication {
 		user1.getCandidates().add(candidate1);
 
 
-		//ASOCIACION USER-ETIQUETAS
-
+		//ASOCIACION CANDIDATO-ETIQUETAS
 		candidate1.getTags().add(tag1);
-		candidate1.getTags().add(tag2);
+		//candidateRepository.save(candidate1);
 
-		candidateRepository.save(candidate1);
+		candidate2.getTags().add(tag1);
+		//candidateRepository.save(candidate2);
+
+		candidateRepository.saveAll(List.of(candidate1,candidate2));
+
+		//ASOCIACION ETIQUETA-CANDIDATO
+
+		tag1.getCandidates().add(candidate1);
+		tag1.getCandidates().add(candidate2);
+		tagRepository.save(tag1);
+
+
 
 
 

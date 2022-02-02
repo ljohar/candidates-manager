@@ -1,20 +1,26 @@
 package com.example.firstCommit.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the Candidates table in database
+ */
+
 @Entity
 @Table(name = "candidates")
 public class Candidate implements Serializable {
 
-    //atributos
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 40, name = "first_name")
+    @Column(length = 40, name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "last_name")
@@ -50,12 +56,12 @@ public class Candidate implements Serializable {
         return  "file uploaded successfully ";
     }*/
 
-    //asociaciones
-
-    @ManyToMany(cascade = {CascadeType.ALL})
+    //ASOCIACIONES
+    @JsonIgnoreProperties(value = {"candidates"}) //ignora atributos específicos de tags
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinTable(
-            name ="candidate-tag",
-            joinColumns = {@JoinColumn(name = "user_id")},
+            name ="candidate_tags",
+            joinColumns = {@JoinColumn(name = "candidate_id")},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")}
     )
     private List<Tag> tags = new ArrayList<>();

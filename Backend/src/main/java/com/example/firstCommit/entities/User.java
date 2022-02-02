@@ -21,7 +21,6 @@ public class User implements Serializable {
 
     //ASOCIACIONES
     @OneToMany
-    //@JoinColumn(name = "candidate_id")
     private List<Candidate> candidates = new ArrayList<>();
 
     public User() {
