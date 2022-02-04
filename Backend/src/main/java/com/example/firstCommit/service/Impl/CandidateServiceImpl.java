@@ -1,11 +1,13 @@
-package com.example.firstCommit.service;
+package com.example.firstCommit.service.Impl;
 
 import com.example.firstCommit.entities.Candidate;
 import com.example.firstCommit.repository.CandidateRepository;
+import com.example.firstCommit.service.CandidateService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {
@@ -34,7 +36,13 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public Candidate save(Candidate candidate) {
-        return null;
+        if(candidate == null )
+            throw new IllegalArgumentException("Datos incorrectos");
+
+        if(!isValidEmail(candidate.getEmail()))
+            throw new IllegalArgumentException("Email incorrecto");
+
+        return candidateRepository.save(candidate);
     }
 
     @Override
@@ -51,5 +59,12 @@ public class CandidateServiceImpl implements CandidateService {
     public boolean deleteAll() {
         candidateRepository.deleteAll();
         return true;
+    }
+
+    private static boolean isValidEmail(String emailAddress) {
+        String regexPattern = "^(\\S+)@(\\S+)\\.(\\S+)$";
+        return Pattern.compile(regexPattern)
+                .matcher(emailAddress)
+                .matches();
     }
 }

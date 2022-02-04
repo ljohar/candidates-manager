@@ -2,9 +2,8 @@ package com.example.firstCommit.controlller;
 
 import com.example.firstCommit.entities.Candidate;
 import com.example.firstCommit.service.CandidateService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +24,15 @@ public class CandidateController {
     @GetMapping("/candidates")
     public List<Candidate> findAll() {
         return candidateService.findAll();}
+
+    /**
+     * Create a new candidate
+     */
+    @PostMapping("/candidates")
+    public ResponseEntity<Candidate> create(@RequestBody Candidate candidate){
+        if (candidate.getId() != null)
+            return ResponseEntity.badRequest().build(); //400
+        return ResponseEntity.ok(candidateService.save(candidate));
+
+    }
 }
