@@ -13,10 +13,10 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "emails")
+    private String username;
+
     private String email;
 
-    @Column(name = "passwords")
     private String password;
 
     //ASOCIACIONES
@@ -26,8 +26,9 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, String email, String password) {
+    public User(Long id, String username, String email, String password) {
         this.id = id;
+        this.username = username;
         this.email = email;
         this.password = password;
     }
@@ -38,6 +39,14 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -68,6 +77,7 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

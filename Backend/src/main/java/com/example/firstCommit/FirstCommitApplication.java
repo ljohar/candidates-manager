@@ -9,14 +9,28 @@ import com.example.firstCommit.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
 @SpringBootApplication
 public class FirstCommitApplication {
 
+
+//	@Bean
+//	public PasswordEncoder passwordEncoder(){
+//		return new BCryptPasswordEncoder();
+//	}
+
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(FirstCommitApplication.class, args);
+
+		//ENCODER
+
+//		PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
 
 		//CANDIDATE
 		CandidateRepository candidateRepository = context.getBean(CandidateRepository.class);
@@ -44,8 +58,21 @@ public class FirstCommitApplication {
 				true,
 				"54678798983"
 		);
-		candidateRepository.save(candidate1);
-		candidateRepository.save(candidate2);
+
+		Candidate candidate3 = new Candidate(
+				null,
+				"name3",
+				"lastaname3",
+				"candidate3@gmail.com",
+				"Barcelona",
+				"España",
+				false,
+				false,
+				"54678798983"
+		);
+		//candidateRepository.save(candidate1);
+		//candidateRepository.save(candidate2);
+		candidateRepository.saveAll(List.of(candidate1, candidate2, candidate3));
 
 
 		//TAG
@@ -65,9 +92,10 @@ public class FirstCommitApplication {
 
 		UserRepository userRepository = context.getBean(UserRepository.class);
 
-		User user1 = new User(null, "usuario1@gmail.com", "1234");
+		User user1 = new User(null,"user1","user1@gmail.com", "user1");
 
 		userRepository.save(user1);
+		//System.out.println("ENCRYPTED PASSWORD" + user1.getPassword());
 
 		//ASOCIACION USER-CANDIDATES
 

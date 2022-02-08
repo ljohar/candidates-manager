@@ -12,9 +12,24 @@ import java.util.Optional;
 public interface CandidateService {
 
     Optional<Candidate> findById(Long id);
+
     List<Candidate> findAll();
 
+    List<Candidate> findAllByCountry(String candidateCountry);
+
+    List<Candidate> findAllByPresencialidadTrue();
+
+    List<Candidate> findAllByPresencialidadFalse();
+
+    List<Candidate> findAllByTrasladoTrue();
+
+    List<Candidate> findAllByTrasladoFalse();
+
+    List<Candidate> findAllByCountryAndCity(String country, String city);
+
     Candidate save(Candidate candidate);
+
+    List<Candidate> saveAll(List<Candidate> candidate);
 
     boolean deleteById(Long id);
 

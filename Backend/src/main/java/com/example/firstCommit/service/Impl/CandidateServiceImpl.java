@@ -1,10 +1,12 @@
 package com.example.firstCommit.service.Impl;
 
+
 import com.example.firstCommit.entities.Candidate;
 import com.example.firstCommit.repository.CandidateRepository;
 import com.example.firstCommit.service.CandidateService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -24,7 +26,6 @@ public class CandidateServiceImpl implements CandidateService {
     public Optional<Candidate> findById(Long id) {
         if(id==null || id<=0)
             return Optional.empty();
-
         return candidateRepository.findById(id);
     }
 
@@ -33,25 +34,59 @@ public class CandidateServiceImpl implements CandidateService {
         return candidateRepository.findAll();
     }
 
+    @Override
+    public List<Candidate> findAllByCountry(String candidateCountry){
+
+        if (candidateCountry == null)
+            return new ArrayList<>();
+        return candidateRepository.findAllByCountry(candidateCountry);
+    }
 
     @Override
-    public Candidate save(Candidate candidate) {
-        if(candidate == null )
-            throw new IllegalArgumentException("Datos incorrectos");
+    public List<Candidate> findAllByPresencialidadTrue() {
+        return candidateRepository.findAllByPresencialidadTrue();
+    }
 
+    @Override
+    public List<Candidate> findAllByPresencialidadFalse() {
+        return candidateRepository.findAllByPresencialidadFalse();
+    }
+
+    @Override
+    public List<Candidate> findAllByTrasladoTrue() {
+        return candidateRepository.findAllByTrasladoTrue();
+    }
+
+    @Override
+    public List<Candidate> findAllByTrasladoFalse() {
+        return candidateRepository.findAllByTrasladoFalse();
+    }
+
+    @Override
+    public List<Candidate> findAllByCountryAndCity(String country, String city) {
+        return candidateRepository.findAllByCountryAndCity(country, city);
+    }
+
+
+
+
+    @Override
+    public Candidate save(Candidate candidate) throws IllegalArgumentException {
         if(!isValidEmail(candidate.getEmail()))
             throw new IllegalArgumentException("Email incorrecto");
-
         return candidateRepository.save(candidate);
+    }
+
+    @Override
+    public List<Candidate> saveAll(List<Candidate> candidate) {
+        return null;
     }
 
     @Override
     public boolean deleteById(Long id) {
         if(id == null || !candidateRepository.existsById(id))
             return false;
-
         candidateRepository.deleteById(id);
-
         return true;
     }
 
@@ -60,6 +95,7 @@ public class CandidateServiceImpl implements CandidateService {
         candidateRepository.deleteAll();
         return true;
     }
+
 
     private static boolean isValidEmail(String emailAddress) {
         String regexPattern = "^(\\S+)@(\\S+)\\.(\\S+)$";
