@@ -1,6 +1,7 @@
 package com.example.firstCommit.security.service;
 
-import com.example.demo.repository.UserRepository;
+
+import com.example.firstCommit.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.example.demo.domain.User user = userRepository.findByUsername(username)
+        com.example.firstCommit.entities.User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
         return new org.springframework.security.core.userdetails.User(

@@ -2,9 +2,11 @@ package com.example.firstCommit.service.Impl;
 
 
 import com.example.firstCommit.entities.Candidate;
+import com.example.firstCommit.entities.Tag;
 import com.example.firstCommit.repository.CandidateRepository;
 import com.example.firstCommit.service.CandidateService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,10 @@ public class CandidateServiceImpl implements CandidateService {
         this.candidateRepository = candidateRepository;
     }
 
+
+    /*
+    Search methods
+     */
 
     @Override
     public Optional<Candidate> findById(Long id) {
@@ -67,8 +73,22 @@ public class CandidateServiceImpl implements CandidateService {
         return candidateRepository.findAllByCountryAndCity(country, city);
     }
 
+    /*@Override
+    public List<Candidate> findAllByTagTagname(String tag) {
+        if (!StringUtils.hasLength(tag))
+            throw new IllegalArgumentException("Etiqueta incorrecta");
 
+        return candidateRepository.findAllByTagTagname(tag);
+    }*/
 
+    /*@Override
+    public List<Candidate> findAllByTagNamein(List<Tag> tags) {
+        return findAllByTagNamein(List.of());
+    }*/
+
+    /*
+    Save a new candidate
+     */
 
     @Override
     public Candidate save(Candidate candidate) throws IllegalArgumentException {
@@ -89,6 +109,9 @@ public class CandidateServiceImpl implements CandidateService {
         candidateRepository.deleteById(id);
         return true;
     }
+
+
+
 
     @Override
     public boolean deleteAll() {

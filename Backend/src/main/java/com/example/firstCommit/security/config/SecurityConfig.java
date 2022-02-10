@@ -1,8 +1,9 @@
 package com.example.firstCommit.security.config;
 
-import com.example.demo.security.jwt.JwtAuthEntryPoint;
-import com.example.demo.security.jwt.JwtRequestFilter;
-import com.example.demo.security.service.UserDetailsServiceImpl;
+
+import com.example.firstCommit.security.jwt.JwtAuthEntryPoint;
+import com.example.firstCommit.security.jwt.JwtRequestFilter;
+import com.example.firstCommit.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -83,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
-                .antMatchers("/api/hello/**").permitAll()
+                .antMatchers("/api/candidates/**").permitAll()
                 .antMatchers("/").permitAll()
                 .anyRequest().authenticated();
 

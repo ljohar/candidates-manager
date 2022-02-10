@@ -1,6 +1,7 @@
 package com.example.firstCommit.security.jwt;
 
-import com.example.demo.security.service.UserDetailsServiceImpl;
+
+import com.example.firstCommit.security.service.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

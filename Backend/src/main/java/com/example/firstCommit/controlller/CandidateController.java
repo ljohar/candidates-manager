@@ -65,6 +65,11 @@ public class CandidateController {
         return candidateService.findAllByTrasladoFalse();
     }
 
+    /*@GetMapping("/candidates/search/tag/{tag}")
+    public List<Candidate> findAllByTagTag(@PathVariable String tag){
+        return candidateService.findAllByTagTagname(tag);
+    }*/
+
 
     /**
      * Create a new candidate

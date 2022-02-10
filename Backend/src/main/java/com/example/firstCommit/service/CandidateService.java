@@ -33,6 +33,10 @@ public interface CandidateService {
 
     boolean deleteById(Long id);
 
+   // List<Candidate> findAllByTagTagin(List <Tag> tags);
+
+    //List<Candidate> findAllByTagTagname(String tag);
+
     boolean deleteAll();
 
 }
