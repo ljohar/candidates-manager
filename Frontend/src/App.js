@@ -5,7 +5,6 @@ import  { Login } from './Login/Login.js';
 import {StudentsTable} from './StudentsTable/StudentsTable.js'
 
 
-
 function App() {
   return (
     <div className="wrapper">
@@ -15,12 +14,7 @@ function App() {
           <Route path="/StudentsTable" element={<StudentsTable/>}/>   
         </Routes>
       </BrowserRouter>
-    </div>
-    // <React.Fragment>
-    //   // <Login/>
-    //   {/* <StudentsTable/> */}
-    // </React.Fragment>
-    
+    </div>  
   );
 }
 

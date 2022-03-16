@@ -73,13 +73,13 @@ public class CandidateServiceImpl implements CandidateService {
         return candidateRepository.findAllByCountryAndCity(country, city);
     }
 
-    /*@Override
-    public List<Candidate> findAllByTagTagname(String tag) {
+    @Override
+    public List<Candidate> findAllByTags_Tagname(String tag) {
         if (!StringUtils.hasLength(tag))
             throw new IllegalArgumentException("Etiqueta incorrecta");
 
-        return candidateRepository.findAllByTagTagname(tag);
-    }*/
+        return candidateRepository.findAllByTags_Tagname(tag);
+    }
 
     /*@Override
     public List<Candidate> findAllByTagNamein(List<Tag> tags) {

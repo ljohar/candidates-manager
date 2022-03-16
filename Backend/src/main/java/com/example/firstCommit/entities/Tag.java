@@ -13,7 +13,7 @@ public class Tag implements Serializable {
     private Long id;
 
     @Column(name = "tags" )
-    private String tagName;
+    private String tagname;
 
     //Bidireccional
     @ManyToMany(mappedBy = "tags")
@@ -24,7 +24,7 @@ public class Tag implements Serializable {
 
     public Tag(Long id, String tagName) {
         this.id = id;
-        this.tagName = tagName;
+        this.tagname = tagName;
     }
 
     public Long getId() {
@@ -35,12 +35,12 @@ public class Tag implements Serializable {
         this.id = id;
     }
 
-    public String getTagName() {
-        return tagName;
+    public String getTagname() {
+        return tagname;
     }
 
-    public void setTagName(String tagName) {
-        this.tagName = tagName;
+    public void setTagname(String tagname) {
+        this.tagname = tagname;
     }
 
     public List<Candidate> getCandidates() {
@@ -55,7 +55,7 @@ public class Tag implements Serializable {
     public String toString() {
         return "Tag{" +
                 "id=" + id +
-                ", tag='" + tagName + '\'' +
+                ", tag='" + tagname + '\'' +
                 '}';
     }
 }

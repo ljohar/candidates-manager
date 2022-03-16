@@ -27,7 +27,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
 
     //List<Candidate> findAllByTagTagin(Collection<Tag> tags);
 
-    //List<Candidate> findAllByTagTagname(String tag);
+    List<Candidate> findAllByTags_Tagname(String tagname);
 
 
 

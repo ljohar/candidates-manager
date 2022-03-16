@@ -35,7 +35,7 @@ public interface CandidateService {
 
    // List<Candidate> findAllByTagTagin(List <Tag> tags);
 
-    //List<Candidate> findAllByTagTagname(String tag);
+    List<Candidate> findAllByTags_Tagname(String tag);
 
     boolean deleteAll();
 

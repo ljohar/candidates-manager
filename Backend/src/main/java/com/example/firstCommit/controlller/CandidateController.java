@@ -65,10 +65,10 @@ public class CandidateController {
         return candidateService.findAllByTrasladoFalse();
     }
 
-    /*@GetMapping("/candidates/search/tag/{tag}")
-    public List<Candidate> findAllByTagTag(@PathVariable String tag){
-        return candidateService.findAllByTagTagname(tag);
-    }*/
+    @GetMapping("/candidates/search/tags/{tagname}")
+    public List<Candidate> findAllByTagTagname(@PathVariable String tagname){
+        return candidateService.findAllByTags_Tagname(tagname);
+    }
 
 
     /**
