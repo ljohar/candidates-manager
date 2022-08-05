@@ -95,7 +95,7 @@ public class FirstCommitApplication {
 		User user1 = new User(null,"user1","user1@gmail.com", "user1");
 
 		userRepository.save(user1);
-		//System.out.println("ENCRYPTED PASSWORD" + user1.getPassword());*/
+		//System.out.println("ENCRYPTED PASSWORD" + user1.getPassword());
 
 		//ASOCIACION USER-CANDIDATES
 

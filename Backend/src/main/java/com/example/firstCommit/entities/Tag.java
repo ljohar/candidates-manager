@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represnts the tags table in database
+ */
 @Entity
 @Table(name = "tags")
 public class Tag implements Serializable {

@@ -24,10 +24,11 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
 
-    /*
-    Search methods
+    /**
+     * Search a candidate by id
+     * @param id
+     * @return a Candidate object if exists, otherwise return an empty optional instance
      */
-
     @Override
     public Optional<Candidate> findById(Long id) {
         if(id==null || id<=0)
@@ -35,6 +36,10 @@ public class CandidateServiceImpl implements CandidateService {
         return candidateRepository.findById(id);
     }
 
+    /**
+     * Search by all candidates
+     * @return a list of candidates
+     */
     @Override
     public List<Candidate> findAll() {
         return candidateRepository.findAll();
@@ -42,7 +47,6 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public List<Candidate> findAllByCountry(String candidateCountry){
-
         if (candidateCountry == null)
             return new ArrayList<>();
         return candidateRepository.findAllByCountry(candidateCountry);
@@ -81,14 +85,7 @@ public class CandidateServiceImpl implements CandidateService {
         return candidateRepository.findAllByTags_Tagname(tag);
     }
 
-    /*@Override
-    public List<Candidate> findAllByTagNamein(List<Tag> tags) {
-        return findAllByTagNamein(List.of());
-    }*/
 
-    /*
-    Save a new candidate
-     */
 
     @Override
     public Candidate save(Candidate candidate) throws IllegalArgumentException {

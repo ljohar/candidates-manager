@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the users table in database
+ */
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -19,10 +22,11 @@ public class User implements Serializable {
 
     private String password;
 
-    //ASOCIACIONES
+    // RELATIONSHIPS
     @OneToMany
     private List<Candidate> candidates = new ArrayList<>();
 
+    // CONSTRUCTORS
     public User() {
     }
 
@@ -32,6 +36,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    // GETTERS AND SETTERS
     public Long getId() {
         return id;
     }
