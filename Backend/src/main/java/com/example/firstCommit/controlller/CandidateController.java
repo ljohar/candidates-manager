@@ -4,6 +4,7 @@ import com.example.firstCommit.entities.Candidate;
 import com.example.firstCommit.service.CandidateService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 import java.util.Optional;
@@ -88,19 +89,38 @@ public class CandidateController {
     @PutMapping("/candidates")
     public ResponseEntity<Candidate> update(@RequestBody Candidate candidate){
         if (candidate.getId() == null)
+//            log.warn("Trying to update a non existent candidate")
             return ResponseEntity.badRequest().build(); // 400
-
+//        TODO Retrieve the object and change the desire fields through setters
+//        TODO Verify if the object exists by id
+//        if(!candidateService.existbyId(candidate.getId())){
+//          log.warn("")
+//           return ResponseEntity.notFound().build(); // 404
         return ResponseEntity.ok(candidateService.save(candidate));
     }
-
+// Integridad referencial borrar una tabla que esta relacionada con otras
+// puede arrojar excepciones
     @DeleteMapping("/candidates/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
         boolean result = candidateService.deleteById(id);
+// TODO verify first if the object exists
+//        if(!candidateService.existbyId(candidate.getId())){
+//          log.warn("Trying to delete a non existent candidate")
+//           return ResponseEntity.notFound().build(); // 404
         if(result)
             return ResponseEntity.noContent().build();
         else
             return ResponseEntity.internalServerError().build();
     }
+//    TODO implement method deleteALl
+//    @ApiIgnore
+//    @DeleteMapping("/candidates")
+//    public ResponseEntity<Void> deleteAll(){
+//        log.info("REST Request for delete all candidates");
+//        candidateService.deleteAll();
+//        return RsponseEntity.noContent().build();
+//
+//    }
 
 
 }

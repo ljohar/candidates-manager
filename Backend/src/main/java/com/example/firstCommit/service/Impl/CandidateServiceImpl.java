@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
+// TODO Add log messages
+// private final Logger log = LoggerFactory.getLogger(BookController.class);
+
 @Service
 public class CandidateServiceImpl implements CandidateService {
 
@@ -95,6 +98,7 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
+    // TODO resolve return null
     public List<Candidate> saveAll(List<Candidate> candidate) {
         return null;
     }

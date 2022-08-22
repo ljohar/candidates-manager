@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents the users table in database
+ * Represents the user's table in database
  */
 @Entity
 @Table(name = "users")

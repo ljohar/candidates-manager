@@ -1,6 +1,7 @@
 package com.example.firstCommit.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +16,6 @@ import java.util.List;
 @Table(name = "candidates")
 public class Candidate implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,41 +23,28 @@ public class Candidate implements Serializable {
     @Column(length = 40, name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(length = 40, name = "last_name", nullable = false)
     private String lastName;
 
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "city" )
     private String city;
 
-    @Column(name = "country")
     private String country;
 
-    @Column(name = "presencialidad")
-    private Boolean presencialidad;
+    @ApiModelProperty("Candidate's availability to work remotely")
+    private Boolean remote;
 
-    @Column(name = "traslado")
-    private Boolean traslado;
+    @ApiModelProperty("Candidate's availability to relocate")
+    private Boolean relocate;
 
-    @Column(name = "telefono")
-    private String telefono;
+    private String phone;
 
-    //image
 
-    /*@PostMapping("/uploadYourFile")
-
-    public String uploadFile( MultipartFile file) throws IOException {
-        FileInputStream inputStream = (FileInputStream) file.getInputStream();
-
-        //you can use inputStream object which currently has your "file" data
-        // you can process this to fetch your data.
-        return  "file uploaded successfully ";
-    }*/
-
-    //ASOCIACIONES
-    @JsonIgnoreProperties(value = {"candidates"}) //ignora atributos específicos de tags
+    // RELATIONSHIPS
+    // TAGS
+    @JsonIgnoreProperties(value = {"candidates"}) // ignore tags's candidate attribute
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinTable(
             name ="candidate_tags",
@@ -70,16 +57,16 @@ public class Candidate implements Serializable {
     public Candidate() {
     }
 
-    public Candidate(Long id, String firstName, String lastName, String email, String city, String country, Boolean presencialidad, Boolean traslado, String telefono) {
+    public Candidate(Long id, String firstName, String lastName, String email, String city, String country, Boolean remote, Boolean traslado, String phone) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.city = city;
         this.country = country;
-        this.presencialidad = presencialidad;
-        this.traslado = traslado;
-        this.telefono = telefono;
+        this.remote = remote;
+        this.relocate = traslado;
+        this.phone = phone;
     }
 
     public Long getId() {
@@ -130,28 +117,28 @@ public class Candidate implements Serializable {
         this.country = country;
     }
 
-    public Boolean getPresencialidad() {
-        return presencialidad;
+    public Boolean getRemote() {
+        return remote;
     }
 
-    public void setPresencialidad(Boolean presencialidad) {
-        this.presencialidad = presencialidad;
+    public void setRemote(Boolean remote) {
+        this.remote = remote;
     }
 
-    public Boolean getTraslado() {
-        return traslado;
+    public Boolean getRelocate() {
+        return relocate;
     }
 
-    public void setTraslado(Boolean traslado) {
-        this.traslado = traslado;
+    public void setRelocate(Boolean relocate) {
+        this.relocate = relocate;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<Tag> getTags() {
@@ -171,9 +158,10 @@ public class Candidate implements Serializable {
                 ", email='" + email + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
-                ", presencialidad=" + presencialidad +
-                ", traslado=" + traslado +
-                ", telefono='" + telefono + '\'' +
+                ", remote=" + remote +
+                ", relocate=" + relocate +
+                ", phone='" + phone + '\'' +
+                ", tags=" + tags +
                 '}';
     }
 }

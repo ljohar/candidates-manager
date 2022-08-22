@@ -1,16 +1,15 @@
 package com.example.firstCommit.controlller;
 
-import com.example.firstCommit.entities.Candidate;
 import com.example.firstCommit.entities.Tag;
 import com.example.firstCommit.service.TagService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+
 public class TagController {
     private final TagService tagService;
 

@@ -2,17 +2,11 @@ package com.example.firstCommit;
 
 import com.example.firstCommit.entities.Candidate;
 import com.example.firstCommit.entities.Tag;
-import com.example.firstCommit.entities.User;
 import com.example.firstCommit.repository.CandidateRepository;
 import com.example.firstCommit.repository.TagRepository;
-import com.example.firstCommit.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -90,11 +84,13 @@ public class FirstCommitApplication {
 
 		//USER
 
-		/*UserRepository userRepository = context.getBean(UserRepository.class);
+//		/* UserRepository userRepository = context.getBean(UserRepository.class);
+//
+//		User user1 = new User(null,"user1","user1@gmail.com", "user1");
+//
+//		userRepository.save(user1);*/
 
-		User user1 = new User(null,"user1","user1@gmail.com", "user1");
 
-		userRepository.save(user1);
 		//System.out.println("ENCRYPTED PASSWORD" + user1.getPassword());
 
 		//ASOCIACION USER-CANDIDATES
