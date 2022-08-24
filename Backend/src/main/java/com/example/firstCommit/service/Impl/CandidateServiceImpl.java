@@ -56,23 +56,23 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public List<Candidate> findAllByPresencialidadTrue() {
-        return candidateRepository.findAllByPresencialidadTrue();
+    public List<Candidate> findAllByRemoteTrue() {
+        return candidateRepository.findAllByRemoteTrue();
     }
 
     @Override
-    public List<Candidate> findAllByPresencialidadFalse() {
-        return candidateRepository.findAllByPresencialidadFalse();
+    public List<Candidate> findAllByRemoteFalse() {
+        return candidateRepository.findAllByRemoteFalse();
     }
 
     @Override
-    public List<Candidate> findAllByTrasladoTrue() {
-        return candidateRepository.findAllByTrasladoTrue();
+    public List<Candidate> findAllByRelocateTrue() {
+        return candidateRepository.findAllByRelocateTrue();
     }
 
     @Override
-    public List<Candidate> findAllByTrasladoFalse() {
-        return candidateRepository.findAllByTrasladoFalse();
+    public List<Candidate> findAllByRelocateFalse() {
+        return candidateRepository.findAllByRelocateFalse();
     }
 
     @Override

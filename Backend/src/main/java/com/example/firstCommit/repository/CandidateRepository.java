@@ -17,13 +17,13 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
 
     List<Candidate> findAllByCountryAndCity (String country, String city);
 
-    List<Candidate> findAllByPresencialidadTrue();
+    List<Candidate> findAllByRemoteTrue();
 
-    List<Candidate> findAllByPresencialidadFalse();
+    List<Candidate> findAllByRemoteFalse();
 
-    List<Candidate> findAllByTrasladoTrue();
+    List<Candidate> findAllByRelocateTrue();
 
-    List<Candidate> findAllByTrasladoFalse();
+    List<Candidate> findAllByRelocateFalse();
 
     //List<Candidate> findAllByTagTagin(Collection<Tag> tags);
 

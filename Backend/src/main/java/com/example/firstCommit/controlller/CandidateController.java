@@ -48,22 +48,22 @@ public class CandidateController {
 
     @GetMapping("/candidates/search/presencialidad/presencialidad=true")
     public List<Candidate> findAllByPresencialidadTrue(){
-        return candidateService.findAllByPresencialidadTrue();
+        return candidateService.findAllByRemoteTrue();
     }
 
     @GetMapping("/candidates/search/presencialidad/presencialidad=false")
     public List<Candidate> findAllByPresencialidadFalse(){
-        return candidateService.findAllByPresencialidadFalse();
+        return candidateService.findAllByRemoteFalse();
     }
 
     @GetMapping("/candidates/search/traslado/traslado=true")
     public List<Candidate> findAllByTrasladoTrue(){
-        return candidateService.findAllByTrasladoTrue();
+        return candidateService.findAllByRelocateTrue();
     }
 
     @GetMapping("/candidates/search/traslado/traslado=false")
     public List<Candidate> findAllByTrasladoFalse(){
-        return candidateService.findAllByTrasladoFalse();
+        return candidateService.findAllByRelocateFalse();
     }
 
     @GetMapping("/candidates/search/tags/{tagname}")

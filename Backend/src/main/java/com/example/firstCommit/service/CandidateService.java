@@ -17,13 +17,13 @@ public interface CandidateService {
 
     List<Candidate> findAllByCountry(String candidateCountry);
 
-    List<Candidate> findAllByPresencialidadTrue();
+    List<Candidate> findAllByRemoteTrue();
 
-    List<Candidate> findAllByPresencialidadFalse();
+    List<Candidate> findAllByRemoteFalse();
 
-    List<Candidate> findAllByTrasladoTrue();
+    List<Candidate> findAllByRelocateTrue();
 
-    List<Candidate> findAllByTrasladoFalse();
+    List<Candidate> findAllByRelocateFalse();
 
     List<Candidate> findAllByCountryAndCity(String country, String city);
 

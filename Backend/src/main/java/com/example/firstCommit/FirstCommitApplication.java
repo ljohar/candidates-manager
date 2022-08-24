@@ -14,21 +14,13 @@ import java.util.List;
 public class FirstCommitApplication {
 
 
-//	@Bean
-//	public PasswordEncoder passwordEncoder(){
-//		return new BCryptPasswordEncoder();
-//	}
-
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(FirstCommitApplication.class, args);
-
-		//ENCODER
-
-//		PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
 
 		//CANDIDATE
 		CandidateRepository candidateRepository = context.getBean(CandidateRepository.class);
 
+		// TODO Create CandidateBuilder class
 		Candidate candidate1 = new Candidate(
 				null,
 				"name1",
@@ -64,10 +56,8 @@ public class FirstCommitApplication {
 				false,
 				"54678798983"
 		);
-		//candidateRepository.save(candidate1);
-		//candidateRepository.save(candidate2);
-		candidateRepository.saveAll(List.of(candidate1, candidate2, candidate3));
 
+		candidateRepository.saveAll(List.of(candidate1, candidate2, candidate3));
 
 		//TAG
 
@@ -82,23 +72,7 @@ public class FirstCommitApplication {
 		tagRepository.save(tag3);
 
 
-		//USER
-
-//		/* UserRepository userRepository = context.getBean(UserRepository.class);
-//
-//		User user1 = new User(null,"user1","user1@gmail.com", "user1");
-//
-//		userRepository.save(user1);*/
-
-
-		//System.out.println("ENCRYPTED PASSWORD" + user1.getPassword());
-
-		//ASOCIACION USER-CANDIDATES
-
-		//user1.getCandidates().add(candidate1);
-
-
-		//ASOCIACION CANDIDATO-ETIQUETAS
+		// CANDIDATES-TAGS RELATIONSHIP
 		candidate1.getTags().add(tag1);
 		//candidateRepository.save(candidate1);
 
@@ -107,15 +81,11 @@ public class FirstCommitApplication {
 
 		candidateRepository.saveAll(List.of(candidate1,candidate2));
 
-		//ASOCIACION ETIQUETA-CANDIDATO
+		// TAGS-CANDIDATES RELATIONSHIP
 
 		tag1.getCandidates().add(candidate1);
 		tag1.getCandidates().add(candidate2);
 		tagRepository.save(tag1);
-
-
-
-
 
 	}
 
