@@ -23,10 +23,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 /**
- * Clase para la configuración de seguridad Spring Security
+ * Spring Security config class
  */
 @Configuration
-@EnableWebSecurity // permite a Spring aplicar esta configuracion a la configuraicon de seguridad global
+@EnableWebSecurity // Allows to have the Spring Security defined in any WebSecurityConfigurer
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -35,7 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthEntryPoint unauthorizedHandler;
 
-    // ================ CREACIÓN DE BEANS ======================
     @Bean
     public JwtRequestFilter authenticationJwtTokenFilter() {
         return new JwtRequestFilter();
@@ -53,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Configuracion global de CORS para toda la aplicacion
+     * Global CORS config
      */
     @Bean
     CorsConfigurationSource corsConfigurationSource()
@@ -69,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
-    // ========================= OVERRIDE: CONFIGURE ======
+    // Override configure
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
